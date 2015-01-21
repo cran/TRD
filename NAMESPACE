@@ -1,0 +1,6 @@
+#exportPattern("^[[:alpha:]]+")
+# Export all names
+#exportPattern(".")
+export(find.maf,findr,gcount,ll,prev,rtrios,strata.cnt,tdt.cnt,tdt)
+import(Rlab)
+
