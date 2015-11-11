@@ -1,16 +1,14 @@
 \name{prev}
 \alias{prev}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Calculate prevalence of disease
+Calculate theoretical prevalence of disease
 }
 \description{
-Use 3 penetrance factors for genotype 0, 1 and 2 (additive model), tranmission ratio of minor allele from both parents, and minor allele frequency (MAF) to calculate the disease prevalence.
+Use 3 penetrance factors for genotype 0, 1 and 2 (additive model),  ratio of maternal to paternal-induced disease risk for a heterozygous child, tranmission ratio of minor allele from mother and father to offspring, and minor allele frequency (MAF) to calculate the disease prevalence. Additive model means the genotype is the number of copies of minor allele that the individual carries assuming a bi-allelic locus. This genotype will be 0 for homozygous wild-type, 1 for heterozygous, and 2 for homozygous mutant.  Minor allele normally refers to the disease allele, which has lower frequency than the alternative allele(s).
 }
 \usage{
-prev(f0, f1, f2, rmother, rfather, maf)
+prev(f0, f1, f2, g, tmother, tfather, maf)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{f0}{
 penetrance for individuals with genotype 0 (additive model)
@@ -21,46 +19,25 @@ penetrance for individuals with genotype 1 (additive model)
   \item{f2}{
 penetrance for individuals with genotype 2 (additive model)
 }
-  \item{rmother}{
+  \item{g}{
+Ratio of maternal- over paternal-induced disease risk
+}
+  \item{tmother}{
 transmission ratio of minor allele from mother to child
 }
-  \item{rfather}{
+  \item{tfather}{
 transmission ratio of minor allele from father to child
 }
   \item{maf}{
 minor allele frequency
 }
 }
-%\details{
-%%  ~~ If necessary, more details than the description above ~~
-%}
 \value{
 \item{d}{disease prevalence}
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
 }
-%\references{
-%% ~put references to the literature/web site here ~
-%}
 \author{
 Lam Opal Huang
 }
-%\note{
-%%  ~~further notes~~
-%}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-%\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-%}
 \examples{
-d=prev(0.1,0.2,0.3,0.5,0.5,0.1)
+prev(0.1,0.2,0.3,1,0.5,0.5,0.1)
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-%\keyword{ ~kwd1 }
-%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

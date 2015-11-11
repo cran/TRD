@@ -1,6 +1,3 @@
-#exportPattern("^[[:alpha:]]+")
-# Export all names
-#exportPattern(".")
-export(find.maf,findr,gcount,ll,prev,rtrios,strata.cnt,tdt.cnt,tdt)
+export(find.maf, find.t, gcount, ll, prev, rtrios, strata.cnt, tdt)
 import(Rlab)
-
+importFrom("stats", "anova", "glm", "pchisq", "poisson")

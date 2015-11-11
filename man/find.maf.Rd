@@ -1,59 +1,33 @@
 \name{find.maf}
 \alias{find.maf}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-Find MAF of sample of case-trios and control-trios
+Find minor allele frequency (MAF) in case-trios, control-trios, or the whole sample.
 }
 \description{
-Compuate MAF in case child, control child, parents of cases and controls, all affected, all unaffected, and whole sample
+Compute MAF in child, parents and triad of case-trios, control-trios, or the whole sample. Minor allele normally refers to the disease allele, which has lower frequency than the alternative allele(s). Trios with partially missing data are included.
 }
 \usage{
 find.maf(sample)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{sample}{a dataset with case- and control-trios with first column as case status (1=case, 0=control), 2nd maternal genotype, 3rd paternal genotype, 4th child genotype.
-%%     ~~Describe \code{sample} here~~
+  \item{sample}{
+case- and/or control-trios dataset with first column as disease status (1=case, 0=control), the second, third and forth columns as maternal, paternal and child genotypes. The fifth column, if entered as part of the input data, is the parent-of-origin indicator of disease allele in a heterozygous child (a value of 1 indicates the mother transmitted the disease allele and 0 indicates the father transmitted). The parent-of-origin indicator is only meaningful for a heterozygous child.
 }
 }
-%\details{
-%%  ~~ If necessary, more details than the description above ~~
-%}
 \value{
-\item{case-child}{MAF of case children only}
-\item{ctrl-child}{MAF of control childrens only}
-\item{case-parent}{MAF of parents of cases only}
-\item{ctrl-parent}{MAF of parents of controls only}
-\item{case}{MAF of affected only}
-\item{ctrl}{MAF of unaffected only}
-\item{sample}{MAF of whole sample}
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+\item{cases}{MAF in affected children, parents, or triads of case-trios}
+\item{ctrls}{MAF in unaffected children, parents, or triads of control-trios}
+\item{sample}{MAF in children, parents, or triads of the whole sample}
 }
-%\references{
-%% ~put references to the literature/web site here ~
-%}
 \author{
 Lam Opal Huang
 }
-%\note{
-%%  ~~further notes~~
-%}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
 \code{\link{rtrios}}
-%% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-trios=rtrios(1000,50,0.1,0.2,0.3,0.5,0.5,0.1)
-find.maf(rbind(trios[[1]],trios[[2]]))
+trios=rtrios(100000,500,0.1,0.2,0.3,1,0.5,0.5,0.1)
+find.maf(trios$case)
+find.maf(trios$ctrl)
+find.maf(rbind(trios$case,trios$ctrl))
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-%\keyword{ ~kwd1 }
-%\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
